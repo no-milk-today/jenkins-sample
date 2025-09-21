@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        PROJECT_NAME = 'jenkins-example'
+        PROJECT_NAME = 'jenkins-sample'
         REPORT_DIR = 'build/test-results/test'
         JACOCO_HTML = 'build/reports/jacoco/test/html'
         EMAIL_RECIPIENTS = 'dream-@tut.by' // нужно заменить на валидный email
