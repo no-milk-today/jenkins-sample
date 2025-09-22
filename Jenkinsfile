@@ -2,11 +2,11 @@ pipeline {
     agent any
 
     environment {
-        PROJECT_NAME = 'jenkins-sample'
+        PROJECT_NAME = 'jenkins-example'
         REPORT_DIR = 'build/test-results/test'
         JACOCO_HTML = 'build/reports/jacoco/test/html'
-        EMAIL_RECIPIENTS = 'dream-@tut.by' // нужно заменить на валидный email
-        EMAIL_FROM = 'drmhere@yandex.by' // нужно заменить на валидный email
+        EMAIL_RECIPIENTS = 'drmhere@gmail.com'
+        EMAIL_FROM = 'drmhere@yandex.by'
         EMAIL_SUBJECT = 'Результат сборки Jenkins'
         TELEGRAM_CHAT_ID = credentials('TELEGRAM_CHAT_ID')
         TELEGRAM_TOKEN = credentials('TELEGRAM_TOKEN')

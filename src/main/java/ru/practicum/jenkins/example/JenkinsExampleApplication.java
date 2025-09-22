@@ -1,11 +1,11 @@
-package com.practicum.jenkins.sample;
+package ru.practicum.jenkins.example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JenkinsSampleApplication {
+public class JenkinsExampleApplication {
     public static void main(String[] args) {
-        SpringApplication.run(JenkinsSampleApplication.class, args);
+        SpringApplication.run(JenkinsExampleApplication.class, args);
     }
 }

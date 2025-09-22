@@ -1,4 +1,4 @@
-package com.practicum.jenkins.sample;
+package ru.practicum.jenkins.example.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import ru.practicum.jenkins.example.dto.UserDto;
 
 import static org.hamcrest.Matchers.notNullValue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -24,31 +25,31 @@ class UserControllerTest {
 
     @Test
     void createUser_shouldReturnCreatedUser() throws Exception {
-        var userDto = new UserDto(null, "Hanna");
+        UserDto userDto = new UserDto(null, "Анна");
 
         mockMvc.perform(post("/users")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(userDto)))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.id", notNullValue()))
-                .andExpect(jsonPath("$.name").value("Hanna"));
+                .andExpect(jsonPath("$.name").value("Анна"));
     }
 
     @Test
     void getUser_shouldReturnUserIfExists() throws Exception {
-        var userDto = new UserDto(null, "Oleg");
+        UserDto userDto = new UserDto(null, "Олег");
 
-        var response = mockMvc.perform(post("/users")
+        String response = mockMvc.perform(post("/users")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(userDto)))
                 .andExpect(status().isCreated())
                 .andReturn().getResponse().getContentAsString();
 
-        var created = objectMapper.readValue(response, UserDto.class);
+        UserDto created = objectMapper.readValue(response, UserDto.class);
 
         mockMvc.perform(get("/users/" + created.getId()))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value("Oleg"));
+                .andExpect(jsonPath("$.name").value("Олег"));
     }
 
     @Test

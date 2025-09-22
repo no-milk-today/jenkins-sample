@@ -1,4 +1,4 @@
-package com.practicum.jenkins.sample;
+package ru.practicum.jenkins.example.dto;
 
 public class UserDto {
     private Long id;
